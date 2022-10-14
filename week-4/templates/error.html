@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8' />
+    <meta meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>降落失敗</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/error.css') }}">
+</head>
+<body>
+    <div class = "welcome">
+        <div>
+            <header>
+                <h2>整個就是很失敗的頁面</h2>
+            </header>
+        </div>
+    </div>
+    <div class = content>
+        <div class="imgs">
+            <!--<img id = "egg" />
+            <img id = "soup"/>-->
+        </div>
+        <div class = "txt">
+            <!--裝動態錯誤訊息的地方-->
+            {{ message }}        
+        </div>
+
+        <a href = "/logout">
+            點此回首頁
+        </a>
+
+    </div> 
+
+
+
+<script>
+    
+
+    
+    function change(){
+        let url = location.href
+        let get_url = url.split("%")[27]
+        if (get_url =="94!"){
+            let imgElement_e = document.createElement("img");
+            imgElement_e.src = "/mysource/egg.png" ;
+            let imgs_e = document.querySelector(".imgs");
+            imgs_e.appendChild(imgElement_e);
+        }else{
+                let imgElement = document.createElement("img");
+                imgElement.src = "/mysource/soup.png";
+                let imgs = document.querySelector(".imgs");
+                imgs.appendChild(imgElement);
+            }
+       
+    }
+
+
+
+console.log( url = location.href.split("%")[27]);
+change();
+</script>
+
+</body>
+</html>
