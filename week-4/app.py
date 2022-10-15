@@ -52,13 +52,19 @@ def logout():
 # 這裡固定只能是 GET 方法
 @app.route("/error") 
 def error():
-    if request.args.get("message","") == "有帳號或密碼沒輸喔!" :
-    
-        err_empty = request.args.get("message","有帳號或密碼沒輸喔!")
-        return render_template("error.html" , message = err_empty )
+    if url_for("error" ,  message ='有帳號或密碼沒輸喔!') :
+        return render_template("error.html" , message ='有帳號或密碼沒輸喔!')
     else:
-        err_message =  request.args.get("message","打錯了，請重新輸入帳號密碼")
-        return render_template("error.html" ,  message = err_message) 
+        return render_template("error.html" ,  message ='打錯了，請重新輸入帳號密碼!')
+
+    # 原本超級繞的邏輯:
+    # if request.args.get("message","") == "有帳號或密碼沒輸喔!" :    
+    #     err_empty = request.args.get("message","有帳號或密碼沒輸喔!")
+    #     return render_template("error.html" , message = err_empty )
+    # else:
+    #     err_message =  request.args.get("message","打錯了，請重新輸入帳號密碼")
+    #     return render_template("error.html" ,  message = err_message)  
+
 
 
 # 建立一個密鑰，內容可以隨便打
