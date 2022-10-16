@@ -1,4 +1,5 @@
 
+from pickletools import long1
 from flask import Flask , session , redirect , url_for , render_template , request
 app = Flask(
     __name__ ,    # __name__ 代表目前執行的模組 這是python內建的變數模式
@@ -52,10 +53,9 @@ def logout():
 # 這裡固定只能是 GET 方法
 @app.route("/error") 
 def error():
-    if url_for("error" ,  message ='有帳號或密碼沒輸喔!') :
-        return render_template("error.html" , message ='有帳號或密碼沒輸喔!')
-    else:
-        return render_template("error.html" ,  message ='打錯了，請重新輸入帳號密碼!')
+    # 試著不要執著於判斷式    
+    return render_template("error.html" , message = request.args.get("message","")  )
+    
 
     # 原本超級繞的邏輯:
     # if request.args.get("message","") == "有帳號或密碼沒輸喔!" :    
@@ -69,6 +69,16 @@ def error():
 
 # 建立一個密鑰，內容可以隨便打
 app.secret_key = "anyway, that is a secrect"
+
+
+
+# # 計算雞區，計算正整數的平方
+# app.route("/square/<inputN>")
+# def square():
+#     return render_template("/square") # 記得放要顯示的正整數
+#     # square還沒做喔，首頁計算機CSS也沒做
+
+
 
 
 
