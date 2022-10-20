@@ -73,6 +73,10 @@ values
 * 使⽤ SELECT、SQL Aggregate Functions 搭配 JOIN 語法，取得 member 資料表中欄位 username 是 test 的所有留⾔平均按讚數。
 ![github](https://github.com/zabeth16/Wehelp/blob/main/week-5/ScreenShot/05_03%20join%20avg%20where.png?raw=true "05_03 join avg")
 
+### 2022.10.20 更新 message 的 member_id 新增外鍵，並測試不會輕易被刪除
+![image](https://user-images.githubusercontent.com/40664034/196958739-fe53a37a-d4d3-4641-a849-a2e33dcfcd09.png)
+
+
 
 ## 其他: 匯出指定資料庫 mysqldump
 ![github](https://github.com/zabeth16/Wehelp/blob/main/week-5/ScreenShot/06%20final%20output.png?raw=true "output")
