@@ -112,13 +112,7 @@ def member():
         name = session["record"]
         print("登入暱稱: " , name[0][1])
         
-        # # 這裡是利用message 流水id號抓出留言
-        # id_mes = session["id_mes"][0]
-        # print("message 流水id號: " , id_mes)               
-        
-        # mycursor.execute( 'SELECT content FROM message WHERE id = %s ',(id_mes,) )
-        # talk = mycursor.fetchone()
-        # print(talk[0])
+
         
 
         i = 0
@@ -138,9 +132,7 @@ def member():
 
         return render_template("memberSS.html"  , all_message = talk_all ,  name = session["record"][0][1]  ,  messageSS = "降落成功，歡迎你!") #純註冊的，但成功登入也會來這        
 
-        # talking =  talk_all[i][1]
-        # name_message =  talk_all[i][0]
-        
+
     
     # 註冊成功的
     elif user == "已註冊":        
@@ -188,10 +180,7 @@ def message():
     mydb.commit()
     print(mycursor.fetchall, "was inserted.")
 
-    # 把 table message 的 流水id 裝進session用    
-    mycursor.execute("SELECT id FROM message WHERE content = %s " , (talk,))
-    id_mes = mycursor.fetchone() 
-    session["id_mes"] = id_mes   
+
 
     return redirect("/member") 
 
