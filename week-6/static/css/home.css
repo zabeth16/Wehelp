@@ -1,0 +1,142 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #ECFEAA;
+}
+
+.welcome{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2de84;
+    color: rgb(0, 0, 0);
+}
+
+h2{
+    text-align: center;
+    font-size: 50px;
+}
+
+
+.main{
+    display: grid;
+    grid-template-columns: 5% 10% 20% 10% 5%;
+    grid-template-rows: 20% 20% 15% 10% 10%;
+    grid-template-areas: 
+        "left target center right"
+        "side" ; /*可以給每個隔線做不同命名，但後面有點懶了*/
+
+    /*給grid做置中*/
+    justify-content: center; 
+    align-items: center;
+}
+
+
+
+img{
+    grid-column-start: 2 ;
+    /*grid-column-end:1;*/
+    grid-row-start : 1;           
+    height: 200px;
+    width: auto;       
+}
+
+.form_top{
+    grid-column-start: 3  ;
+    grid-row-end : 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+.form{
+    grid-column-start: 3 ;
+    grid-row-end : 5 ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    /*margin-left: 30px;*/
+}
+
+
+.signup_h{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #86836d;
+    line-height: 20px;
+    height: 40px;
+
+}
+
+.signin_h{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #a6a670;
+    line-height: 20px;
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+
+
+.form-group{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    align-items: center;
+}
+
+hr{
+    margin-top: 50px;
+    margin-bottom: 10px;
+}
+
+txt{    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;    
+}
+
+
+/* RWD 我筆電的寬度*/
+
+@media (max-width:1350px){
+    .main{
+        display: grid;
+        grid-template-columns: 30% 20% 30%;
+        grid-template-rows: 20% 20% 15% 10% 10%;
+        /*給grid做置中*/
+        justify-content: center; 
+        align-items: center;
+        margin-top: 100px;
+    }
+
+    img{
+        grid-column-start: 1 ;
+        grid-row-start : 1 ;
+    }
+
+    .form_top{
+        grid-column-start: 2 ;
+        grid-row-end : 2 ;
+    }
+
+    .form{
+        grid-column-start: 2 ;
+        grid-row-end : 5 ;
+
+    }
+
+}

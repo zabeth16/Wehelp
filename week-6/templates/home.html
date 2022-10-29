@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8' />
+    <meta meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>快來登入勇者新手村</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/home.css') }}">
+</head>
+
+
+<body>
+    <div class = "welcome">
+        <div>
+            <h2>
+                歡迎來到勇者小雞農場<br/>
+                ▼ 請註冊登入成為勇者小雞 ▼
+            </h2>
+        </div>
+    </div>
+    <div class = main>
+        
+        <!-- 降落小雞-->
+        <img src = "/mysource/geronimo.png"/>
+        
+        <div class = form_top>
+
+            <form action="/signup"  method="post"> <!--{{ url_for ('signup') }}-->
+                <header class = "signup_h">
+                    <txt>註冊系統</txt>
+                </header>
+
+                <div class="form-group">
+                    <label for = "name">暱稱:</label>
+                    <input id = "name" type = "text" name = "name" />
+                </div>
+
+                <div class="form-group">                    
+                    <label for="account">帳號:</label>
+                    <input id = "account"  type = "text" name = "username" /> <!--這邊name是固定的，後方參數才是我們能修改的-->
+                </div>
+                <div class="form-group">
+                    <label for = "password">密碼:</label>
+                    <input id = "password" type = "text" name = "psword_s" />
+                </div>
+
+                <div class="form-group">
+                    <button type="註冊加入" class="btn_login">註冊加入</button>
+                </div>
+
+            </form>        
+
+        </div> <!-- form -->
+
+             
+
+        
+        <div class = form>
+
+            <form action="{{ url_for ('signin') }}" method="post"> 
+                <header class = "signin_h">
+                    <txt>登入系統</txt>
+                </header>
+                
+
+                <div class="form-group">
+                    <label for="account">帳號:</label>
+                    <input id = "account"  type = "text" name = "account" /> <!--這邊name是固定的，後方參數才是我們能修改的-->
+                </div>
+                <div class="form-group">
+                    <label for = "password">密碼:</label>
+                    <input id = "password" type = "text" name = "psword" />
+
+                </div>
+
+                <div class="form-group">
+                    <button type="我要登入" class="btn_login">勇者小雞登入</button>
+                </div>
+
+            </form>        
+
+        </div> <!-- form -->
+        
+    </div>
+    
+
+
+    
+
+
+</body>
+</html>

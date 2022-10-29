@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8' />
+    <meta meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>成功登入勇者新手村</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/memberSS.css') }}">
+</head>
+
+
+<body>
+    <div class = "welcome">
+        <div>
+            <header>
+                <h2>
+                    歡迎、歡迎!!!窩們~歡迎你!<br/>
+                    這是勇者小雞會員頁
+                </h2>
+            </header>
+        </div>
+    </div>
+
+    <div class = "content">
+        <img src = "/mysource/success.png" />
+
+        <txt class = "name">
+        {{ name }}
+        </txt>
+
+        <txt>
+        {{ messageSS }} 
+        </txt>
+
+        <txt class = "message">
+            {{ message }}
+        </txt>
+
+        <a href = "/signout">
+            點此登出回首頁
+        </a>
+    </div>
+
+    <hr/>
+    <!--來試留言板囉-->
+
+
+    <div class = "form-top">
+        <form action="/message"  method="post"> <!--{{ url_for ('signup') }}-->
+            <header class = "talk_title">
+                <txt>小雞留言板</txt>
+            </header>
+            <div class = "form-group">
+                <label>請寫留言: </label>
+                <input id = "talk" type = "text" name = "talk" />                
+            </div>
+
+            <div class = "form-group">
+            <button type="張貼留言" class="btn_talk"> 張貼留言 </button>
+            </div>
+        
+        </form>        
+
+
+    </div> <!--form-top-->
+
+    <hr/>
+    
+    <div class = talking >
+        
+        <!-- {{ name }} 說: {{ talking }} -->
+        <ul>
+            {% for names in all_message %}
+                <li>{{ names[0] }} 說: {{ names[1] }} </li>
+            {% endfor %}
+        </ul>       
+
+    </div>
+        <!-- 這行要顯示在留言板內 -->
+    <!-- <script>alert("你怎麼帥成這樣?")</script> -->
+
+    <script>
+
+            
+ 
+
+
+
+
+        // "留言內容，應該是append進來的(吧)"
+    </script>
+
+
+</body>
+</html>
