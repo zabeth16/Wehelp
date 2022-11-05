@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset='utf-8' />
+    <meta meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>成功登入勇者新手村</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='css/memberSS.css') }}">
+</head>
+
+
+<body>
+    <div class = "welcome">
+        <div>
+            <header>
+                <h2>
+                    歡迎、歡迎!!!窩們~歡迎你!<br/>
+                    這是勇者小雞會員頁
+                </h2>
+            </header>
+        </div>
+    </div>
+
+    <div class = "content">
+        <img id = "success" src = "/mysource/success.png" />
+
+        <txt class = "name">
+        {{ name }}
+        </txt>
+
+        <txt>
+        {{ messageSS }} 
+        </txt>
+
+        <txt class = "message">
+            {{ message }}
+        </txt>
+
+        <a href = "/signout">
+            點此登出回首頁
+        </a>
+    </div>
+
+    <!-- 查詢會員名字區 -->
+    <div class = "img_ctrl">
+        <img  src = /mysource/find_myself.png />
+    </div>
+        <div class = "who-top">
+            
+            
+            <div class = "who-all">
+        
+                <header class = "who_title">
+                    <txt> 失智小雞忘記名字 </txt>
+                </header>
+                <div class = "who-group">
+                    <label>輸入帳號來查名字: </label>
+                    <input id = "who" type = "text" name = "username" />                
+                </div>  
+            
+                <div class = "who-group" >
+                    <button  class="btn_who" onclick = "get_name();" > 我是誰 </button> <!-- onclick = "get_data();" -->
+                </div>
+            </div>
+            
+        </div> <!--who-top-->
+    
+
+    <div class = "show_who">
+        <!-- 顯示查詢名字預備區 -->
+    </div>
+
+
+    <script> // 查詢名字用
+        function get_name(){
+            username = document.getElementById("who").value
+            
+            fetch("http://127.0.0.1:3000/api/member?username=" + username).then(function(response){
+                                               
+                return response.json();
+    
+            }).then( function(data){ 
+                // 拿取名字的部分
+
+                    
+                    if (data.data !== null){                        
+                        let show_who = document.querySelector(".show_who");
+                        show_who.innerHTML = "<h3>" + "我是: "  + data.data.name + "，原帳號: " + data.data.username + "</h3>"
+                    }else{
+                        
+                        let show_who = document.querySelector(".show_who")
+                        show_who.innerHTML = "<h3>" + " 嘿! 查無此人"  + "</h3>"
+                    };
+
+                   
+    
+            });
+        };
+    
+      
+            
+    </script>
+    <hr/>
+    <!--來改名囉-->
+    <div class = "get_img">
+        <!--預備塞圖片區-->
+    </div>
+
+    <div class = "who-top" >
+    
+        <div class = "who-all">
+            <header class = "who_title">
+                <txt> 改名轉運區 </txt>
+            </header>
+            <div class = "who-group">
+                <label>輸入要改的新名字: </label>
+                <input id = "new_name" type = "text" name = "name" required/>                
+            </div>  
+        
+            <div class = "who-group" >
+                <button class="btn_who" onclick = "change_name();" > 來改名 </button> <!-- onclick = "change_name();" -->
+            </div>
+        </div>
+        
+        
+    </div> <!--who-top-->
+
+    <div class = "show_name">
+        <!-- 顯示更新名字預備區 -->
+    </div>
+
+    <script>
+        function change_name(){
+            let name = document.getElementById("new_name")
+
+            let request_entry = {
+                "name": name.value
+            }
+            console.log(request_entry)
+        fetch("http://127.0.0.1:3000/api/member",{
+            method:"PATCH",
+            credentials:"include",
+            body:JSON.stringify(request_entry),
+            cache:"no-cache",
+            headers: new Headers({
+                "content-type":"application/json"
+            })
+        })  
+    
+        .then(function (response){
+
+            if (response.status != 200){
+                console.log(`response status is not 200 :  ${response.status}`)
+            }
+            return response.json()
+                    
+        })
+        .then(function (data){
+            
+            console.log(data)
+            console.log(Object.keys(data)[0]);
+            if (Object.keys(data)[0] == "OK") {
+                let show_name = document.querySelector(".show_name")                
+                show_name.textContent = "改名成功，祝好運 !" + "新名字: " +  name.value
+                // 處理圖片
+                
+                let get_img = document.querySelector(".get_img");
+                while (get_img.hasChildNodes()) {
+                    get_img.removeChild(get_img.firstChild)                    
+                };
+                  
+                let img = document.createElement("img");
+                img.src = " /mysource/change_ok.png"                                 
+                get_img.appendChild(img);
+                
+
+                
+            }else{
+  
+
+                let show_name = document.querySelector(".show_name")
+                show_name.textContent = "欸欸欸名字不能空白，是不是想成為開光雞?"
+                // 處利圖片  
+                let get_img = document.querySelector(".get_img");
+                while (get_img.hasChildNodes()) {
+                    get_img.removeChild(get_img.firstChild)                    
+                };
+                  
+                let img = document.createElement("img");
+                img.src = " /mysource/change_error.png"               
+                get_img.appendChild(img);
+                
+
+            }
+           
+            
+        })
+    };
+        
+    </script>
+
+
+
+
+
+
+    <hr/>
+    <!--來試留言板囉-->
+
+
+    <div class = "form-top">
+        <form action="/message"  method="post"> <!--{{ url_for ('signup') }}-->
+            <header class = "talk_title">
+                <txt>小雞留言板</txt>
+            </header>
+            <div class = "form-group">
+                <label>請寫留言: </label>
+                <input id = "talk" type = "text" name = "talk" required/>                
+            </div>
+
+            <div class = "form-group">
+            <button type="張貼留言" class="btn_talk" > 張貼留言 </button>
+            </div>
+        
+        </form>        
+
+
+    </div> <!--留言板 form-top-->
+
+
+
+    <hr/>
+    
+    <div class = "talking" >
+        
+        <!-- {{ name }} 說: {{ talking }} -->
+        <ul>
+            {% for names in all_message %}
+                <li>{{ names[0] }} 說: {{ names[1] }} </li>
+            {% endfor %}
+        </ul>       
+
+    </div>
+        <!-- 這行要顯示在留言板內 -->
+    <!-- <script>alert("你怎麼帥成這樣?")</script> -->
+
+
+
+
+</body>
+</html>

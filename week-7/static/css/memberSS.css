@@ -1,0 +1,174 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #ECFEAA;
+}
+
+.welcome{
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0877f;
+    color: rgb(0, 0, 0);
+}
+
+h2{
+    text-align: center;
+    font-size: 50px;
+}
+
+
+.content{
+    display: grid;
+    grid-template-columns: 10% 10% 20% 10% 10%;
+    grid-template-rows: 30% 30% 20%  ;
+    justify-content: center; 
+    align-items: center;
+}
+
+
+
+
+txt{
+    grid-column-start:3 ;
+    grid-row-end : 2;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.name{
+    grid-column-start: 3 ;
+    grid-row-start : 2 ;
+}
+
+a{
+    grid-column-start:3 ;
+    grid-row-end : 3;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 150px;
+}
+
+#success{
+    grid-column-start:1;
+    grid-column-end: 4;
+    grid-row-end : 3;
+    height: 200px;
+}
+
+
+.form-top{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form-group{
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+
+.talk_title{
+    text-align: center;
+}
+
+/* .talk{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+input{
+    margin-left: 10px;
+    height:20px;
+}
+label{
+    font-size: 20px;
+}
+
+button{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.talking{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+
+.show_name{
+    text-align: center;
+    font-size: 20px;
+}
+
+
+/*查詢、改名區*/
+
+.img_ctrl{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+
+    height: 200px;
+}
+
+.get_img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.who-top{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.who-all{
+    
+    justify-content: center;
+    align-items: center;
+}
+
+header{
+
+    text-align: center;
+}
+
+.who-group{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn_who{
+
+    justify-content: center;
+    align-items: center;
+}
+
+.show_who{
+    text-align: center;
+    font-size: 20px;
+}
