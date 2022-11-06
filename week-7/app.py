@@ -173,9 +173,9 @@ def api():
                     
      
         new_name = request.get_json()
-        print(new_name["name"])
+        print("new_name: " , new_name["name"])
        
-        if new_name["name"] != "" :
+        if new_name["name"] != ""  and session["status"] == "已登入":
             mycursor.execute("UPDATE member SET NAME = %s WHERE id = %s ",(new_name["name"], session["record"][0][0]) )
 
             return ({ "OK" : True })
@@ -185,8 +185,7 @@ def api():
             return ({ "error" : True })
 
         
-    else: 
-        return redirect("/")
+
 
 
 
